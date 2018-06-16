@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FUSProjectUsageTrigger">
+    <session id="160086090">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cfg" value="1" />
+          <entry key="gitignore" value="1" />
+          <entry key="py" value="19" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Ini" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Python" value="19" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="2061" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="2061" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+</project>
