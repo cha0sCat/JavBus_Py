@@ -4,7 +4,6 @@ Automat==0.8.0
 bcrypt==3.1.6
 beautifulsoup4==4.8.2
 certifi==2019.6.16
-cffi==1.11.5
 chardet==3.0.4
 Click==7.0
 constantly==15.1.0
