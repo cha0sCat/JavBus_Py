@@ -117,7 +117,7 @@ class MysqlPipeline(object):
             self.conn.rollback()
         # return item  # 会在控制台输出原item数据，可以选择不写
 
-    def close_spider(self, spider):
+    def spider_closed(self, spider):
         print('Failed')
         self.cursor.close()
         self.conn.close()
