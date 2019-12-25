@@ -31,7 +31,7 @@ def main(request):
     if request.method == "POST":
         data = json.loads(request.form['data'])
         kind = "Javbus_Stars"
-        name = data["code"]
+        name = f'{data["code"]}-{data["name"]}'
         key = datastore.Key(kind, name, project=project)
         entity = datastore.Entity(key=key)
         entity.update(data)
