@@ -45,6 +45,7 @@ class JavbusSpiderMiddleware(object):
 
         # Should return either None or an iterable of Response, dict
         # or Item objects.
+        print(exception)
         pass
 
     def process_start_requests(self, start_requests, spider):
@@ -101,6 +102,7 @@ class JavbusDownloaderMiddleware(object):
         # - return None: continue processing this exception
         # - return a Response object: stops process_exception() chain
         # - return a Request object: stops process_exception() chain
+        print(exception)
         pass
 
     def spider_opened(self, spider):
