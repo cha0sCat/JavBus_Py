@@ -12,7 +12,8 @@
 import json
 from google.cloud import datastore
 
-client = datastore.Client(project="javbus")
+project = "javbus"
+client = datastore.Client(project=project)
 
 
 def count():
@@ -31,7 +32,7 @@ def main(request):
         data = json.loads(request.form['data'])
         kind = "Javbus_Stars"
         name = data["code"]
-        key = datastore.Key(kind, name)
+        key = datastore.Key(kind, name, project=project)
         entity = datastore.Entity(key=key)
         client.put(entity)
     else:
