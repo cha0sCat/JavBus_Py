@@ -24,7 +24,7 @@ NEWSPIDER_MODULE = 'JavBus.spiders'
 
 
 # Scrapy downloader 并发请求(concurrent requests)的最大值,默认: 16
-CONCURRENT_REQUESTS = 300
+CONCURRENT_REQUESTS = 5
 
 # 为同一网站的请求配置延迟（默认值：0）
 # 下载器在下载同一个网站下一个页面前需要等待的时间,
@@ -36,7 +36,7 @@ CONCURRENT_REQUESTS = 300
 
 # 下载延迟设置只有一个有效
 # 对单个网站进行并发请求的最大值。
-CONCURRENT_REQUESTS_PER_DOMAIN = 300
+CONCURRENT_REQUESTS_PER_DOMAIN = 5
 # 对单个IP进行并发请求的最大值。如果非0,则忽略 CONCURRENT_REQUESTS_PER_DOMAIN 设定,
 # 使用该设定。也就是说,并发限制将针对IP,而不是网站。该设定也影响 DOWNLOAD_DELAY:
 # 如果 CONCURRENT_REQUESTS_PER_IP 非0,下载延迟应用在IP而不是网站上。
@@ -112,7 +112,8 @@ ITEM_PIPELINES = {
     # 'JavBus.pipelines.JsonPipeline': 300
     # 将清除的项目在redis进行处理
     # 'JavBus.pipelines.JsonPipeline': 300
-    'JavBus.pipelines.MongoPipeline': 300
+    # 'JavBus.pipelines.MongoPipeline': 300
+    'JavBus.pipelines.DataStorePipeline': 300
 }
 
 

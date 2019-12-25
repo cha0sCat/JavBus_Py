@@ -1,0 +1,7 @@
+# Function dependencies, for example:
+# package>=version
+google-api-core==1.14.3
+google-auth==1.7.2
+google-cloud-core==1.1.0
+google-cloud-datastore==1.10.0
+googleapis-common-protos==1.6.0
