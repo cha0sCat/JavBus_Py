@@ -2,12 +2,12 @@ import scrapy
 import time
 
 from scrapy.spiders import Rule
-from scrapy_redis.spiders import RedisCrawlSpider
+from scrapy.spiders import CrawlSpider
 from scrapy.linkextractors import LinkExtractor
 from JavBus.items import MainItem, StarItem
 
 
-class JavBusSpider(RedisCrawlSpider):
+class JavBusSpider(CrawlSpider):
     # 网站的主页
     domain = 'www.javbus.com'
     name = 'JavBus'
