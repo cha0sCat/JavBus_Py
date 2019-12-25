@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "./start" ]
+CMD [ "python", "./start.py" ]
