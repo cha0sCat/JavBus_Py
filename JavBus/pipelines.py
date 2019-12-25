@@ -29,7 +29,7 @@ class JsonPipeline(object):
             self.star_file.write(line)
         return item
 
-    def close_spider(self, spider):
+    def spider_closed(self, spider):
         self.main_file.close()
         self.star_file.close()
 
