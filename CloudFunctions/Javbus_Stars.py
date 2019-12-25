@@ -21,7 +21,7 @@ def count():
     query.keys_only()
     Javbus = str(len(list(query.fetch())))
 
-    query = client.query(kind="Javbus")
+    query = client.query(kind="Javbus_Stars")
     query.keys_only()
     Javbus_Stars = str(len(list(query.fetch())))
     return f"Javbus: {Javbus}\nJavbus_Stars: {Javbus_Stars}"
