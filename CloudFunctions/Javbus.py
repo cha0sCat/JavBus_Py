@@ -12,7 +12,7 @@
 import json
 from google.cloud import datastore
 
-client = datastore.Client()
+client = datastore.Client(project="javbus")
 
 
 def count():
