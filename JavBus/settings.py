@@ -24,7 +24,7 @@ NEWSPIDER_MODULE = 'JavBus.spiders'
 
 
 # Scrapy downloader 并发请求(concurrent requests)的最大值,默认: 16
-# CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 64
 
 # 为同一网站的请求配置延迟（默认值：0）
 # 下载器在下载同一个网站下一个页面前需要等待的时间,
@@ -36,12 +36,13 @@ NEWSPIDER_MODULE = 'JavBus.spiders'
 
 # 下载延迟设置只有一个有效
 # 对单个网站进行并发请求的最大值。
-# CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 64
 # 对单个IP进行并发请求的最大值。如果非0,则忽略 CONCURRENT_REQUESTS_PER_DOMAIN 设定,
 # 使用该设定。也就是说,并发限制将针对IP,而不是网站。该设定也影响 DOWNLOAD_DELAY:
 # 如果 CONCURRENT_REQUESTS_PER_IP 非0,下载延迟应用在IP而不是网站上。
 # CONCURRENT_REQUESTS_PER_IP = 16
-
+RETRY_TIMES = 5
+RETRY_HTTP_CODES = [500, 502, 503, 504, 522, 524, 408, 429, 403]
 # 禁用Cookie（默认情况下启用）
 # COOKIES_ENABLED = False
 
@@ -110,7 +111,7 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     # 'JavBus.pipelines.JsonPipeline': 300
     # 将清除的项目在redis进行处理
-    'JavBus.pipelines.MysqlPipeline': 300
+    'JavBus.pipelines.JsonPipeline': 300
     # 'JavBus.pipelines.MongoPipeline': 300
 }
 
@@ -141,7 +142,7 @@ LOG_SHORT_NAMES = False
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 # 确保所有的爬虫通过Redis去重
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-REDIS_URL = 'redis://10.0.0.4:6379'
+REDIS_URL = 'redis://127.0.0.1:6379'
 # REDIS_HOST = '127.0.0.1'  # 也可以根据情况改成 localhost
 # REDIS_PORT = 6379
 
@@ -176,9 +177,9 @@ MONGO_COLL_MOVIE_TAG = "movie_tag"
 
 
 # MYSQL 配置
-MYSQL_HOST = "10.0.0.4"
-MYSQL_USER = "root"
-MYSQL_PASSWORD = "root"
+MYSQL_HOST = "localhost"
+MYSQL_USER = "javbus"
+MYSQL_PASSWORD = "LRBS3JGce36j36Da"
 MYSQL_PORT = 3306
 MYSQL_DB = "javbus"
 
