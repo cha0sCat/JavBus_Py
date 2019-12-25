@@ -9,7 +9,8 @@ from datetime import datetime
 import json
 import pymongo
 import pymysql
-from scrapy.conf import settings
+from scrapy.utils.project import get_project_settings
+settings = get_project_settings()
 
 from JavBus.items import MainItem, StarItem
 
