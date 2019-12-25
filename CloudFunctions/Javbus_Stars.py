@@ -34,6 +34,7 @@ def main(request):
         name = data["code"]
         key = datastore.Key(kind, name, project=project)
         entity = datastore.Entity(key=key)
+        entity.update(data)
         client.put(entity)
     else:
         return count()
