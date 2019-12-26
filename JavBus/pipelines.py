@@ -7,12 +7,26 @@
 import codecs
 from datetime import datetime
 import json
+import requests
 import pymongo
 import pymysql
 from scrapy.utils.project import get_project_settings
 settings = get_project_settings()
 
 from JavBus.items import MainItem, StarItem
+
+
+class DataStorePipeline(object):
+    def __init__(self):
+        self.MainItem_cloud_functions_url = "https://asia-east2-javbus.cloudfunctions.net/javbus"
+        self.StarItem_cloud_functions_url = "https://asia-east2-javbus.cloudfunctions.net/javbus_stars"
+
+    def process_item(self, item, spider):
+        if isinstance(item, MainItem):
+            requests.post(self.MainItem_cloud_functions_url, data={"data": json.dumps(dict(item), ensure_ascii=False)})
+        elif isinstance(item, StarItem):
+            requests.post(self.StarItem_cloud_functions_url, data={"data": json.dumps(dict(item), ensure_ascii=False)})
+        return item
 
 
 class JsonPipeline(object):
@@ -117,7 +131,7 @@ class MysqlPipeline(object):
             self.conn.rollback()
         # return item  # 会在控制台输出原item数据，可以选择不写
 
-    def close_spider(self, spider):
+    def spider_closed(self, spider):
         print('Failed')
         self.cursor.close()
         self.conn.close()

@@ -9,6 +9,8 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #     中文的 https://www.jianshu.com/p/df9c0d1e9087
+import os
+
 
 # Scrapy项目的名字,这将用来构造默认 User-Agent,同时也用来log,
 # 当您使用 startproject 命令创建项目时其也被自动赋值。
@@ -24,7 +26,7 @@ NEWSPIDER_MODULE = 'JavBus.spiders'
 
 
 # Scrapy downloader 并发请求(concurrent requests)的最大值,默认: 16
-CONCURRENT_REQUESTS = 64
+CONCURRENT_REQUESTS = 300
 
 # 为同一网站的请求配置延迟（默认值：0）
 # 下载器在下载同一个网站下一个页面前需要等待的时间,
@@ -36,7 +38,7 @@ CONCURRENT_REQUESTS = 64
 
 # 下载延迟设置只有一个有效
 # 对单个网站进行并发请求的最大值。
-CONCURRENT_REQUESTS_PER_DOMAIN = 64
+CONCURRENT_REQUESTS_PER_DOMAIN = 300
 # 对单个IP进行并发请求的最大值。如果非0,则忽略 CONCURRENT_REQUESTS_PER_DOMAIN 设定,
 # 使用该设定。也就是说,并发限制将针对IP,而不是网站。该设定也影响 DOWNLOAD_DELAY:
 # 如果 CONCURRENT_REQUESTS_PER_IP 非0,下载延迟应用在IP而不是网站上。
@@ -111,8 +113,9 @@ DOWNLOADER_MIDDLEWARES = {
 ITEM_PIPELINES = {
     # 'JavBus.pipelines.JsonPipeline': 300
     # 将清除的项目在redis进行处理
-    'JavBus.pipelines.JsonPipeline': 300
+    # 'JavBus.pipelines.JsonPipeline': 300
     # 'JavBus.pipelines.MongoPipeline': 300
+    'JavBus.pipelines.DataStorePipeline': 300
 }
 
 
@@ -137,21 +140,24 @@ LOG_SHORT_NAMES = False
 
 # ###########ScrapyRedis设置############
 # 不清除Redis队列、这样可以暂停/恢复 爬取
-# SCHEDULER_PERSIST = False
+SCHEDULER_PERSIST = True
+# 启动时清空队列
+SCHEDULER_FLUSH_ON_START = False
 # 启用Redis调度存储请求队列
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 # 确保所有的爬虫通过Redis去重
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-REDIS_URL = 'redis://127.0.0.1:6379'
-# REDIS_HOST = '127.0.0.1'  # 也可以根据情况改成 localhost
-# REDIS_PORT = 6379
+REDIS_URL = os.getenv("REDIS_URL")  # 'redis://user:passwd@127.0.0.1:6379'
+# REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
+# REDIS_PORT = os.getenv("REDIS_PORT", 6379)
+
 
 
 # ############数据导出设置############
 # 数据保存到MONGODB
 # 主机IP
 FEED_EXPORT_ENCODING = 'utf-8'
-MONGO_HOST = "10.0.0.4"
+MONGO_HOST = "127.0.0.1"
 # 端口号
 MONGO_PORT = 27017
 # 库名
