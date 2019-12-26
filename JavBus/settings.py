@@ -140,14 +140,14 @@ LOG_SHORT_NAMES = False
 
 # ###########ScrapyRedis设置############
 # 不清除Redis队列、这样可以暂停/恢复 爬取
-SCHEDULER_PERSIST = True
+# SCHEDULER_PERSIST = True
 # 启动时清空队列
-SCHEDULER_FLUSH_ON_START = False
+# SCHEDULER_FLUSH_ON_START = False
 # 启用Redis调度存储请求队列
-SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 # 确保所有的爬虫通过Redis去重
-DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-REDIS_URL = os.getenv("REDIS_URL")  # 'redis://user:passwd@127.0.0.1:6379'
+# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# REDIS_URL = os.getenv("REDIS_URL")  # 'redis://user:passwd@127.0.0.1:6379'
 # REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
 # REDIS_PORT = os.getenv("REDIS_PORT", 6379)
 
@@ -190,3 +190,6 @@ MYSQL_PORT = 3306
 MYSQL_DB = "javbus"
 
 # ############数据导出设置############
+# DataStore + CloudFunctions 配置
+MAINITEM_CF_URL = "https://CHANGEME.cloudfunctions.net/javbus"
+STARITEM_CF_URL = "https://CHANGEME.cloudfunctions.net/javbus_stars"

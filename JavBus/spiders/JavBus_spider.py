@@ -2,8 +2,8 @@ import scrapy
 import time
 
 from scrapy.spiders import Rule
-from scrapy_redis.spiders import RedisCrawlSpider
-# from scrapy.spiders import CrawlSpider as RedisCrawlSpider
+# from scrapy_redis.spiders import RedisCrawlSpider
+from scrapy.spiders import CrawlSpider as RedisCrawlSpider
 from scrapy.linkextractors import LinkExtractor
 from JavBus.items import MainItem, StarItem
 

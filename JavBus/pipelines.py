@@ -18,8 +18,8 @@ from JavBus.items import MainItem, StarItem
 
 class DataStorePipeline(object):
     def __init__(self):
-        self.MainItem_cloud_functions_url = "https://asia-east2-javbus.cloudfunctions.net/javbus"
-        self.StarItem_cloud_functions_url = "https://asia-east2-javbus.cloudfunctions.net/javbus_stars"
+        self.MainItem_cloud_functions_url = settings["MAINITEM_CF_URL"]
+        self.StarItem_cloud_functions_url = settings["STARITEM_CF_URL"]
 
     def process_item(self, item, spider):
         if isinstance(item, MainItem):
