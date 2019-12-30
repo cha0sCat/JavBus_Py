@@ -114,8 +114,8 @@ ITEM_PIPELINES = {
     # 'JavBus.pipelines.JsonPipeline': 300
     # 将清除的项目在redis进行处理
     # 'JavBus.pipelines.JsonPipeline': 300
-    # 'JavBus.pipelines.MongoPipeline': 300
-    'JavBus.pipelines.DataStorePipeline': 300
+    'JavBus.pipelines.MongoPipeline': 300
+    # 'JavBus.pipelines.DataStorePipeline': 300
 }
 
 
@@ -157,30 +157,12 @@ LOG_SHORT_NAMES = False
 # 数据保存到MONGODB
 # 主机IP
 FEED_EXPORT_ENCODING = 'utf-8'
-MONGO_HOST = "127.0.0.1"
-# 端口号
-MONGO_PORT = 27017
+MONGO_URI = "mongodb://root:passwd@localhost"
 # 库名
-MONGO_DB = "JavBus"
+MONGO_DB = "Javbus"
 # collection名
-MONGO_COLL_MOVIE = "movie"
-MONGO_COLL_STAR = "star"
-MONGO_COLL_MAGNET = "magnet"
-MONGO_COLL_PREVIEW = "preview"
-MONGO_COLL_MOVIE_STAR = "movie_star"
-MONGO_COLL_STUDIO = "studio"
-MONGO_COLL_LABEL = "label"
-MONGO_COLL_DIRECTOR = "director"
-MONGO_COLL_SERIES = "series"
-MONGO_COLL_MOVIE_STUDIO = "movie_studio"
-MONGO_COLL_MOVIE_LABEL = "movie_label"
-MONGO_COLL_MOVIE_DIRECTOR = "movie_director"
-MONGO_COLL_MOVIE_SERIES = "movie_series"
-MONGO_COLL_TAG = "tag"
-MONGO_COLL_MOVIE_TAG = "movie_tag"
-# MONGO_USER = "zhangsan"
-# MONGO_PSW = "123456"
-
+MONGO_COLL_MOVIE = "javbus"
+MONGO_COLL_STAR = "javbus_stars"
 
 # MYSQL 配置
 MYSQL_HOST = "localhost"
