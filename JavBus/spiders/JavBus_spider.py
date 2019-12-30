@@ -18,7 +18,7 @@ class JavBusSpider(RedisCrawlSpider):
     ]
     rules = (
         # 演员详情页
-        Rule(LinkExtractor(allow=(r'https://'+domain+'/(uncensored/)?star/\w+$'),deny=(r'/en/?|/ko/?|/ja/?|/uncensored|/genre|/actresses')), callback="parse_star", follow=True),
+        Rule(LinkExtractor(allow=(r'https://'+domain+'/(uncensored/)?star/\w+$'),deny=(r'/en/?|/ko/?|/ja/?|/genre|/actresses')), callback="parse_star", follow=True),
 
         # 电影详情页
         Rule(LinkExtractor(allow=(r'https://'+domain+'/[\w-]+$'),deny=(r'/en/?|/ko/?|/ja/?|/uncensored|/genre|/actresses')), callback="parse_main", follow=True),
