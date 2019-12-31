@@ -139,7 +139,8 @@ class JavBusSpider(RedisCrawlSpider):
             else:
                 print("存在未知字段!!!"+header)
         item = MainItem()
-        item['code'] = code
+        item['code'] = r.url.split('/')[-1]
+        item['identify'] = code
         item['title'] = title
         item['censored'] = censored
         item['stars'] = stars
